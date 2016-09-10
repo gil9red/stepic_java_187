@@ -2,8 +2,6 @@
  * Created by ipetrash on 10.09.2016.
  */
 
-import java.math.BigInteger;
-
 public class Main {
 
 //    Реализуйте метод flipBit, изменяющий значение одного бита заданного целого числа на противоположное.
@@ -19,38 +17,45 @@ public class Main {
 //    Sample Output:
 //            1
 
-    public static String padLeft(String s, int n) {
-        return String.format("%1$" + n + "s", s).replace(' ', '0');
-    }
-
-    /**
-     * Flips one bit of the given <code>value</code>.
-     *
-     * @param value     any number
-     * @param bitIndex  index of the bit to flip, 1 <= bitIndex <= 32
-     * @return new value with one bit flipped
-     */
+// Update:
+//    Почитал про xor, в битовом представлении xor (или ^), меняет значение бита на противоположеное если попадается
+//    разряд 1 для второй части:
+//            0b111 ^ 0b001 = 0b110
+//            0b111 ^ 0b011 = 0b100
+//            0b111 ^ 0b010 = 0b101
+//
+//    Для данной задачи нужно заменить только 1 бит в указанной позиции, т.е.:
+//    bitIndex = 1, тогда получится 0b1
+//    bitIndex = 2, тогда получится 0b10
+//    bitIndex = 3, тогда получится 0b100
+//
+//    Получившиеся значения -- степень двойки, которые можно получить или через метод Math.pow, или через битовый
+//    сдвиг:
+//    1 << 0 = 2 ** 0 = 1 = 0b0001
+//    1 << 1 = 2 ** 1 = 2 = 0b0010
+//    1 << 2 = 2 ** 2 = 4 = 0b0100
+//    1 << 3 = 2 ** 3 = 8 = 0b1000
+//
+//    Т.е., если мы хотим поменять значение 3-его бита на противоположное, тогда выполняем следующее:
+//    Создаем число с значением 1 в нужном разряде: 1 << 3 (0b0100 = 4)
+//    Выполняем xor (исключающее или):
+//    <число> ^ 1 << 3
+//
+//    Пример:
+//    8 ^ (1 << 2)
+//    0b1000 ^ 0b0100 = 0b1100 = 12
     public static int flipBit(int value, int bitIndex) {
-        int index = 32 - bitIndex;
-
-        String binaryString = Integer.toBinaryString(value);
-        binaryString = padLeft(binaryString, 32);
-
-        char[] binaryStringArr = binaryString.toCharArray();
-        binaryStringArr[index] = binaryStringArr[index] == '1' ? '0' : '1';
-
-        return new BigInteger(String.valueOf(binaryStringArr), 2).intValue();
+        return value ^ (1 << bitIndex - 1);
     }
 
     public static void main(String[] args) {
-        int value = 0;
-        int bit = 1;
-
-        int result = flipBit(value, bit);
+        int result = flipBit(0, 1);
         System.out.println(result);
 
-        value = -1;
-        result = flipBit(value, bit);
+        result = flipBit(-1, 1);
+        System.out.println(result);
+
+        result = flipBit(8, 3);
         System.out.println(result);
     }
 }
