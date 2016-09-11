@@ -93,11 +93,11 @@ Sample Output:
 
         // Для каждой пары ключ-значение вызываем
         roleByDialogs.forEach(
-                (role, dialogs) -> {
-                    builder.append(role).append(":\n")
-                           .append(dialogs)
-                           .append("\n");
-                }
+            (role, dialogs) -> {
+                builder.append(role).append(":\n")
+                       .append(dialogs)
+                       .append("\n");
+            }
         );
 
         return builder.toString();
