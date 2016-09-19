@@ -1,3 +1,5 @@
+package stepic.solutions_12760_step_9;
+
 /**
  * Created by ipetrash on 10.09.2016.
  */
