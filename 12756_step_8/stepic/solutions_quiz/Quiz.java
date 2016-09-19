@@ -1,3 +1,5 @@
+package stepic.solutions_quiz;
+
 /**
  * Created by ipetrash on 05.09.2016.
  */
