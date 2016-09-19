@@ -1,7 +1,5 @@
 package stepic.solutions_12759_step_12;
 
-import src.*;
-
 /**
  * Created by ipetrash on 10.09.2016.
  */
