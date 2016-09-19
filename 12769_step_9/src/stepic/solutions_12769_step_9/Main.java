@@ -37,5 +37,7 @@ class TestMain {
         if (a.hashCode() != b.hashCode()) {
             throw new Error("a.hashCode() == b.hashCode()");
         }
+
+        System.out.println("Test ok.");
     }
 }
