@@ -21,17 +21,21 @@ ComplexNumber b = new ComplexNumber(1, 1);
 
 */
 
-
     public static void main(String[] args) {
+        TestMain.test();
+    }
+}
+
+class TestMain {
+    static void test() {
         ComplexNumber a = new ComplexNumber(1, 1);
         ComplexNumber b = new ComplexNumber(1, 1);
 
-        System.out.println("" + a.equals(b) + " " + a.hashCode() + " " + b.hashCode() + " = " + (a.hashCode() == b.hashCode()));
         if (!a.equals(b)) {
-            System.err.println("a.equals(b)");
+            throw new Error("a.equals(b)");
         }
         if (a.hashCode() != b.hashCode()) {
-            System.err.println("a.hashCode() == b.hashCode()");
+            throw new Error("a.hashCode() == b.hashCode()");
         }
     }
 }
