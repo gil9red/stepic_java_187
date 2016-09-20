@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/12766_step_12/12766_step_12.iml" filepath="$PROJECT_DIR$/12766_step_12/12766_step_12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12769_step_9/12769_step_9.iml" filepath="$PROJECT_DIR$/12769_step_9/12769_step_9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14513_step_7/14513_step_7.iml" filepath="$PROJECT_DIR$/14513_step_7/14513_step_7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14513_step_8/14513_step_8.iml" filepath="$PROJECT_DIR$/14513_step_8/14513_step_8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14513_step_9/14513_step_9.iml" filepath="$PROJECT_DIR$/14513_step_9/14513_step_9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloWorld/HelloWorld.iml" filepath="$PROJECT_DIR$/HelloWorld/HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stepic_java_187.iml" filepath="$PROJECT_DIR$/stepic_java_187.iml" />
+    </modules>
+  </component>
+</project>
