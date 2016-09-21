@@ -1,3 +1,5 @@
+package src.hello_world;
+
 import java.util.Arrays;
 
 /**
@@ -14,5 +16,3 @@ public class HelloWorld {
         System.out.println("Arguments: " + Arrays.asList(args));
     }
 }
-
-
