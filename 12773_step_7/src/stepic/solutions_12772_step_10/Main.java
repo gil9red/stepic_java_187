@@ -71,17 +71,19 @@ RobotConnectionException:
                 throw new RobotConnectionException("Attempts > 3");
             }
 
-            // Установка соединения
             RobotConnection connection = null;
             try {
+                // Установка соединения
                 connection = robotConnectionManager.getConnection();
                 connection.moveRobotTo(toX, toY);
+                return;
 
             } catch (RobotConnectionException e) {
                 // Попытаемся снова подключиться
                 continue;
 
             } finally {
+                // С try-с-ресурсами что-то не проходит
                 if (connection != null) {
                     try {
                         // close тоже может выкинуть исключение и в тестах это проверяется
@@ -91,8 +93,6 @@ RobotConnectionException:
                     }
                 }
             }
-
-            break;
         }
     }
 
