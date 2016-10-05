@@ -1,5 +1,7 @@
 package my.foo.test;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,12 +29,21 @@ public class Foo {
 
 //        foo("1", "2", "3");
 
-        LOGGER.log(Level.FINE, "dfsdfs {0}", 1);
+//        LOGGER.log(Level.FINE, "dfsdfs {0}", 1);
+//
+//        LOGGER.log(Level.WARNING, "dfsdfs {0}, {1}, {2}", new Object[] {
+//                Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)});
 
-        LOGGER.log(Level.WARNING, "dfsdfs {0}, {1}, {2}", new Object[] {
-                Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)});
 
-
+        try {
+            System.out.println(new File(".\\a\\b\\..\\b\\c\\.\\file.txt").getCanonicalPath());
+            System.out.println(new File("a\\.\\b\\..\\c\\.\\file.txt").getCanonicalPath());
+            System.out.println(new File("a\\b\\..\\file.txt").getCanonicalPath());
+            System.out.println(new File("a\\b\\c\\file.txt").getCanonicalPath());
+            System.out.println(new File("a\\..\\b\\c\\file.txt").getCanonicalPath());
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 
     static void foo(String... lines) {
