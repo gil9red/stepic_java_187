@@ -1,8 +1,6 @@
 package stepic.solutions_12774_step_9;
 
 
-import sun.rmi.runtime.Log;
-
 import java.util.logging.*;
 
 /**
