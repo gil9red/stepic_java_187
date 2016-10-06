@@ -50,8 +50,6 @@ main, прописать все import'ы.
 
             prev_read = read;
         }
-
-        out.flush();
     }
 
     public static void main(String[] args) {
