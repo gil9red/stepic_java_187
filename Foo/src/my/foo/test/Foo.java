@@ -1,8 +1,13 @@
 package my.foo.test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,6 +49,16 @@ public class Foo {
         } catch (IOException e) {
             System.err.println(e);
         }
+
+        Path path = Paths.get("");
+        //Paths.newInputStream(path); // not found method
+        try {
+            new FileInputStream(path.toFile());
+        } catch (FileNotFoundException e) {}
+        try {
+            Files.newInputStream(path);
+        } catch (IOException e) {}
+        // new FileInputStream(path); not found constructor
     }
 
     static void foo(String... lines) {
