@@ -2,6 +2,7 @@ package my.foo.test;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.nio.channels.Pipe;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -58,13 +59,18 @@ public class Foo {
 //        } catch (IOException e) {}
 //        // new FileInputStream(path); not found constructor
 
-        try {
-            Writer writer = new OutputStreamWriter(System.out, StandardCharsets.US_ASCII);
-            writer.write("1");
-            writer.write("〱㈳");
-            writer.flush();
-        } catch (IOException e) {
-            System.err.println("error: " + e);
+//        try {
+//            Writer writer = new OutputStreamWriter(System.out, StandardCharsets.US_ASCII);
+//            writer.write("1");
+//            writer.write("〱㈳");
+//            writer.flush();
+//        } catch (IOException e) {
+//            System.err.println("error: " + e);
+//        }
+
+        byte[] byteArray = StandardCharsets.UTF_8.encode("Ы").array();
+        for (byte b : byteArray) {
+            System.out.println(b + " " + Byte.toUnsignedInt(b));
         }
     }
 
