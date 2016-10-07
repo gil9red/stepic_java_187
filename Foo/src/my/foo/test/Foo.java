@@ -1,10 +1,8 @@
 package my.foo.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,25 +38,34 @@ public class Foo {
 //                Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)});
 
 
-        try {
-            System.out.println(new File(".\\a\\b\\..\\b\\c\\.\\file.txt").getCanonicalPath());
-            System.out.println(new File("a\\.\\b\\..\\c\\.\\file.txt").getCanonicalPath());
-            System.out.println(new File("a\\b\\..\\file.txt").getCanonicalPath());
-            System.out.println(new File("a\\b\\c\\file.txt").getCanonicalPath());
-            System.out.println(new File("a\\..\\b\\c\\file.txt").getCanonicalPath());
-        } catch (IOException e) {
-            System.err.println(e);
-        }
+//        try {
+//            System.out.println(new File(".\\a\\b\\..\\b\\c\\.\\file.txt").getCanonicalPath());
+//            System.out.println(new File("a\\.\\b\\..\\c\\.\\file.txt").getCanonicalPath());
+//            System.out.println(new File("a\\b\\..\\file.txt").getCanonicalPath());
+//            System.out.println(new File("a\\b\\c\\file.txt").getCanonicalPath());
+//            System.out.println(new File("a\\..\\b\\c\\file.txt").getCanonicalPath());
+//        } catch (IOException e) {
+//            System.err.println(e);
+//        }
+//
+//        Path path = Paths.get("");
+//        //Paths.newInputStream(path); // not found method
+//        try {
+//            new FileInputStream(path.toFile());
+//        } catch (FileNotFoundException e) {}
+//        try {
+//            Files.newInputStream(path);
+//        } catch (IOException e) {}
+//        // new FileInputStream(path); not found constructor
 
-        Path path = Paths.get("");
-        //Paths.newInputStream(path); // not found method
         try {
-            new FileInputStream(path.toFile());
-        } catch (FileNotFoundException e) {}
-        try {
-            Files.newInputStream(path);
-        } catch (IOException e) {}
-        // new FileInputStream(path); not found constructor
+            Writer writer = new OutputStreamWriter(System.out, StandardCharsets.US_ASCII);
+            writer.write("1");
+            writer.write("〱㈳");
+            writer.flush();
+        } catch (IOException e) {
+            System.err.println("error: " + e);
+        }
     }
 
     static void foo(String... lines) {
