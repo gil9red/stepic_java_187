@@ -15,6 +15,16 @@ public class Client implements Serializable {
     // transient говорит jvm, что не нужно сериализовывать это поле
     private transient int ageInYears;
 
+    public Client(long id, String name, LocalDate birthDate) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
+    public Client() {
+
+    }
+
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
