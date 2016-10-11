@@ -7,6 +7,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -68,10 +71,57 @@ public class Foo {
 //            System.err.println("error: " + e);
 //        }
 
-        byte[] byteArray = StandardCharsets.UTF_8.encode("Ы").array();
-        for (byte b : byteArray) {
-            System.out.println(b + " " + Byte.toUnsignedInt(b));
+//        byte[] byteArray = StandardCharsets.UTF_8.encode("Ы").array();
+//        for (byte b : byteArray) {
+//            System.out.println(b + " " + Byte.toUnsignedInt(b));
+//        }
+
+//        System.out.println(new Date(2016, 2, 2).toString());
+
+        List< Map<String, Object> > listOfEvents = new ArrayList<>();
+        listOfEvents.add(createEvents("1", "Нах все", "11/10/2016", "15:30"));
+        listOfEvents.add(createEvents("2", "Стриптиз", "11/10/2016", "16:30"));
+        listOfEvents.add(createEvents("3", "Уборка территории", "08/10/2016", "10:30"));
+        listOfEvents.add(createEvents("4", "Поклон ректору", "19/10/2016", "16:30"));
+        listOfEvents.add(createEvents("5", "Поклон ректору", "19/10/2016", "18:30"));
+        listOfEvents.add(createEvents("6", "Поклон ректору", "19/10/2016", "10:30"));
+
+        for (Map<String, Object> event : listOfEvents) {
+            System.out.println(String.format("%s %s \"%s\"", event.get("Date"), event.get("Time"), event.get("Name")));
         }
+        System.out.println();
+
+        // Лямбда для сортировки словарей
+        listOfEvents.sort((event1, event2) -> {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+
+            try {
+                // Получение даты/времени событий
+                Date eventDateTime1 = sdf.parse(event1.get("Date") + " " + event1.get("Time"));
+                Date eventDateTime2 = sdf.parse(event2.get("Date") + " " + event1.get("Time"));
+
+                // Сравнение
+                return eventDateTime1.compareTo(eventDateTime2);
+
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Теперь список отсортирован
+        for (Map<String, Object> event : listOfEvents) {
+            System.out.println(String.format("%s %s \"%s\"", event.get("Date"), event.get("Time"), event.get("Name")));
+        }
+    }
+
+    static Map<String, Object> createEvents(String id, String name, String date, String time) {
+        HashMap<String, Object> hm = new HashMap<>();
+        hm.put("Id", id); // id мероприятия
+        hm.put("Name", name); // название мероприятия
+        hm.put("Date", date); // Дата провидения мероприятия
+        hm.put("Time", time); // время провидения мероприятия
+
+        return hm;
     }
 
     static void foo(String... lines) {
