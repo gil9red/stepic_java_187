@@ -12,6 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * Created by ipetrash on 20.09.2016.
@@ -124,6 +127,31 @@ public class Foo {
 //        collection.remove(object);
 //        collection.clear();
 //        collection.addAll(Arrays.asList(object));
+
+        List<String> l = new ArrayList<>();
+        l.add("1");
+        l.add("1");
+        l.add("1");
+        l.add("1");
+        l.add("1");
+        l.add("1");
+        l.add("1");
+
+        Stream<String> stream = l.stream();
+
+//        stream.sorted();
+//        stream.forEach();
+//        stream.count();
+//        stream.collect();
+//        stream.flatMap();
+//        stream.limit();
+//        stream.toArray();
+//        stream.peek();
+//        stream.map();
+//        stream.filter();
+
+//        System.out.println(l.stream().reduce(, String::a));
+//        System.out.println(l.stream().limit(2).collect(Collectors.toList()));
     }
 
     static Map<String, Object> createEvents(String id, String name, String date, String time) {
