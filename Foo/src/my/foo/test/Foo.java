@@ -78,40 +78,52 @@ public class Foo {
 
 //        System.out.println(new Date(2016, 2, 2).toString());
 
-        List< Map<String, Object> > listOfEvents = new ArrayList<>();
-        listOfEvents.add(createEvents("1", "Нах все", "11/10/2016", "15:30"));
-        listOfEvents.add(createEvents("2", "Стриптиз", "11/10/2016", "16:30"));
-        listOfEvents.add(createEvents("3", "Уборка территории", "08/10/2016", "10:30"));
-        listOfEvents.add(createEvents("4", "Поклон ректору", "19/10/2016", "16:30"));
-        listOfEvents.add(createEvents("5", "Поклон ректору", "19/10/2016", "18:30"));
-        listOfEvents.add(createEvents("6", "Поклон ректору", "19/10/2016", "10:30"));
+//        List< Map<String, Object> > listOfEvents = new ArrayList<>();
+//        listOfEvents.add(createEvents("1", "Нах все", "11/10/2016", "15:30"));
+//        listOfEvents.add(createEvents("2", "Стриптиз", "11/10/2016", "16:30"));
+//        listOfEvents.add(createEvents("3", "Уборка территории", "08/10/2016", "10:30"));
+//        listOfEvents.add(createEvents("4", "Поклон ректору", "19/10/2016", "16:30"));
+//        listOfEvents.add(createEvents("5", "Поклон ректору", "19/10/2016", "18:30"));
+//        listOfEvents.add(createEvents("6", "Поклон ректору", "19/10/2016", "10:30"));
+//
+//        for (Map<String, Object> event : listOfEvents) {
+//            System.out.println(String.format("%s %s \"%s\"", event.get("Date"), event.get("Time"), event.get("Name")));
+//        }
+//        System.out.println();
+//
+//        // Лямбда для сортировки словарей
+//        listOfEvents.sort((event1, event2) -> {
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+//
+//            try {
+//                // Получение даты/времени событий
+//                Date eventDateTime1 = sdf.parse(event1.get("Date") + " " + event1.get("Time"));
+//                Date eventDateTime2 = sdf.parse(event2.get("Date") + " " + event1.get("Time"));
+//
+//                // Сравнение
+//                return eventDateTime1.compareTo(eventDateTime2);
+//
+//            } catch (ParseException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+//
+//        // Теперь список отсортирован
+//        for (Map<String, Object> event : listOfEvents) {
+//            System.out.println(String.format("%s %s \"%s\"", event.get("Date"), event.get("Time"), event.get("Name")));
+//        }
 
-        for (Map<String, Object> event : listOfEvents) {
-            System.out.println(String.format("%s %s \"%s\"", event.get("Date"), event.get("Time"), event.get("Name")));
-        }
-        System.out.println();
-
-        // Лямбда для сортировки словарей
-        listOfEvents.sort((event1, event2) -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
-
-            try {
-                // Получение даты/времени событий
-                Date eventDateTime1 = sdf.parse(event1.get("Date") + " " + event1.get("Time"));
-                Date eventDateTime2 = sdf.parse(event2.get("Date") + " " + event1.get("Time"));
-
-                // Сравнение
-                return eventDateTime1.compareTo(eventDateTime2);
-
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // Теперь список отсортирован
-        for (Map<String, Object> event : listOfEvents) {
-            System.out.println(String.format("%s %s \"%s\"", event.get("Date"), event.get("Time"), event.get("Name")));
-        }
+//        Collection<?> collection = new ArrayList();
+//        Object object = new Object();
+//
+//        collection.iterator();
+//        collection.add(object);
+//        collection.toArray();
+//        collection.size();
+//        collection.contains(object);
+//        collection.remove(object);
+//        collection.clear();
+//        collection.addAll(Arrays.asList(object));
     }
 
     static Map<String, Object> createEvents(String id, String name, String date, String time) {
