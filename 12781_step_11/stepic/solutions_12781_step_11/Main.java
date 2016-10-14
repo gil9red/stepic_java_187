@@ -49,6 +49,9 @@ pseudoRandomStream(13) должен вернуть стрим, состоящи�
             Collections.reverse(nums);
 
             StringBuilder builder = new StringBuilder();
+            if (nums.isEmpty()) {
+                nums.add("0");
+            }
             nums.stream().forEach(builder::append);
 
             return Integer.valueOf(builder.toString());
@@ -58,6 +61,14 @@ pseudoRandomStream(13) должен вернуть стрим, состоящи�
 
     public static void main(String[] args) throws Exception {
         IntStream stream = pseudoRandomStream(13);
+        stream.limit(15).forEach(value -> System.out.print(value + " "));
+        System.out.println();
+
+        stream = pseudoRandomStream(1);
+        stream.limit(15).forEach(value -> System.out.print(value + " "));
+        System.out.println();
+
+        stream = pseudoRandomStream(0);
         stream.limit(15).forEach(value -> System.out.print(value + " "));
         System.out.println();
     }
