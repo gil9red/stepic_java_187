@@ -59,7 +59,7 @@ mi
         }
 
         // Замена не буквенных символов на пробелы
-        String text = builder.toString().replaceAll("[^a-zA-Zа-яА-Я]", " ");
+        String text = builder.toString().replaceAll("[^a-zA-Zа-яА-Я0-9]", " ");
 //        System.out.println(text);
 //        System.out.println(builder.toString().replaceAll("\\W", " "));
 

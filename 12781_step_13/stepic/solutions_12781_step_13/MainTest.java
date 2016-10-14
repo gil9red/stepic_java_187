@@ -43,6 +43,18 @@ public class MainTest {
                 );
     }
 
+    @Test
+    public void test3() throws Exception {
+        String text = "";
+        check(text, "");
+    }
+
+    @Test
+    public void test4() throws Exception {
+        String text = "goof 12 12 dig";
+        check(text, "12", "dig", "goof");
+    }
+
     void check(String text, String... result) throws Exception {
         ByteArrayInputStream input = new ByteArrayInputStream(text.getBytes());
         System.setIn(input);
