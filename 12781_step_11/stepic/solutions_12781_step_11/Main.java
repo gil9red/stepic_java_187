@@ -1,10 +1,5 @@
 package stepic.solutions_12781_step_11;
 
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -30,33 +25,8 @@ pseudoRandomStream(13) должен вернуть стрим, состоящи�
 */
 
     public static IntStream pseudoRandomStream(int seed) {
-        IntStream stream = IntStream.iterate(seed, (x) -> {
-            if (x == 0) {
-                return 0;
-            }
-
-            x = x * x;
-
-            // TODO: Число в строку, строку в список, список развернуть, и из списка взять 3 элемента, пропуская первый
-            // после конкатенация в число и получение числа
-            List<String> nums = new ArrayList<>();
-            while (x > 0) {
-                nums.add(String.valueOf(x % 10));
-                x /= 10;
-            }
-
-            nums = nums.stream().skip(1).limit(3).collect(Collectors.toList());
-            Collections.reverse(nums);
-
-            StringBuilder builder = new StringBuilder();
-            if (nums.isEmpty()) {
-                nums.add("0");
-            }
-            nums.stream().forEach(builder::append);
-
-            return Integer.valueOf(builder.toString());
-        });
-        return stream;
+        // У корня числа делением убираем цифру справа, а остатком от деления оставшиеся 3 цифры справа
+        return IntStream.iterate(seed, (x) -> (x * x) / 10 % 1000);
     }
 
     public static void main(String[] args) throws Exception {
