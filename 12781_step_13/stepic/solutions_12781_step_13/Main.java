@@ -60,25 +60,18 @@ mi
 
         // Замена не буквенных символов на пробелы
         String text = builder.toString().replaceAll("[^a-zA-Zа-яА-Я0-9]", " ");
-//        System.out.println(text);
-//        System.out.println(builder.toString().replaceAll("\\W", " "));
 
         // Словарь для подсчета количества слов
         Map<String, Integer> wordsByNumber = new HashMap<>();
         scanner = new Scanner(text);
         while (scanner.hasNext()) {
             String word = scanner.next().toLowerCase();
-//            System.out.println(word);
-
             if (wordsByNumber.containsKey(word)) {
                 wordsByNumber.put(word, wordsByNumber.get(word) + 1);
             } else {
                 wordsByNumber.put(word, 1);
             }
         }
-
-//        System.out.println(wordsByNumber);
-//        System.out.println(wordsByNumber.entrySet().stream().sorted((o1, o2) -> o2.getValue().compareTo(o1.getValue())).collect(Collectors.toList()));
 
         // Словарь, у которого ключом является количество слов, а значением список этих слов
         Map<Integer, List<String>> numberByWords = new HashMap<>();
@@ -92,7 +85,6 @@ mi
 
             numberByWords.get(number).add(word);
         }
-//        System.out.println(numberByWords);
 
         List<String> allWords = new ArrayList<>();
 
@@ -114,3 +106,47 @@ mi
         allWords.stream().forEach(System.out::println);
     }
 }
+
+
+// Эталонное решение от преподавателя.
+/*
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        // Для чтения входного потока используем Scanner.
+        // Поскольку словами мы считаем последовательности символов,
+        // состоящие из букв или цифр, то в качестве разделителя слов Scanner'у
+        // указываем регулярное выражение, означающее
+        // "один или более символ, не являющийся ни буквой, ни цифрой".
+        Scanner scanner = new Scanner(System.in, "UTF-8")
+                .useDelimiter("[^\\p{L}\\p{Digit}]+");
+
+        // Пройдем по всем словам входного потока и составим Map<String, Integer>,
+        // где ключом является слово, преобразованное в нижний регистр,
+        // а значением - частота этого слова.
+        Map<String, Integer> freqMap = new HashMap<>();
+        scanner.forEachRemaining(s -> freqMap.merge(s.toLowerCase(), 1, (a, b) -> a + b));
+
+        freqMap.entrySet().stream()                 // получим стрим пар (слово, частота)
+                .sorted(descendingFrequencyOrder()) // отсортируем
+                .limit(10)                          // возьмем первые 10
+                .map(Map.Entry::getKey)             // из каждой пары возьмем слово
+                .forEach(System.out::println);      // выведем в консоль
+    }
+
+    // Создание Comparator'а вынесено в отдельный метод, чтобы не загромождать метод main.
+    private static Comparator<Map.Entry<String, Integer>> descendingFrequencyOrder() {
+        // Нам нужен Comparator, который сначала упорядочивает пары частоте (по убыванию),
+        // а затем по слову (в алфавитном порядке). Так и напишем:
+        return Comparator.<Map.Entry<String, Integer>>comparingInt(Map.Entry::getValue)
+                .reversed()
+                .thenComparing(Map.Entry::getKey);
+    }
+}
+*/
